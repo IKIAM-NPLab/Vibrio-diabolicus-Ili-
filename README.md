@@ -1,29 +1,32 @@
-# Vibrio-diabolicus-Ili-
+# About this repository
 The present document aims to record the procedure given for the statistical analysis of secondary metabolites present in Vibrio diabolicus was subjected to different stresses due to the composition of nitrogen and phosphorus in 5 different culture media, which were then fractionated into water and methanol with the help of a C18 column. For each step a brief explanation and the code.
-# Vibrio-diabolicus-Ili-
-- [PCA_H2O_NEG](https://github.com/IKIAM-NPLab/Molecular-networking-Vibrio-diabolicus-Ili-/blob/0d29c7ee37cebd13264277641863cdef4cc9326d/PCA_H2O_NEG.Rmd)
-- [PCA_MeOH_NEG](https://github.com/IKIAM-NPLab/Molecular-networking-Vibrio-diabolicus-Ili-/blob/0d29c7ee37cebd13264277641863cdef4cc9326d/PCA_MeOH_NEG.Rmd)
-- [PCA_QC_NEG](https://github.com/IKIAM-NPLab/Molecular-networking-Vibrio-diabolicus-Ili-/blob/0d29c7ee37cebd13264277641863cdef4cc9326d/PCA_QC_NEG.Rmd)
-- [PCA_POS_H2O](https://github.com/IKIAM-NPLab/Molecular-networking-Vibrio-diabolicus-Ili-/blob/0d29c7ee37cebd13264277641863cdef4cc9326d/PCA_POS_H2O.Rmd)
-- [PCA_POS_MeOH](https://github.com/IKIAM-NPLab/Molecular-networking-Vibrio-diabolicus-Ili-/blob/0d29c7ee37cebd13264277641863cdef4cc9326d/PCA_POS_MeOH.Rmd)
+
+# Analysis Notebooks
 - [PCA_POS_QC](https://github.com/IKIAM-NPLab/Molecular-networking-Vibrio-diabolicus-Ili-/blob/0d29c7ee37cebd13264277641863cdef4cc9326d/PCA_POS_QC.Rmd)
+- [PCA_QC_NEG](https://github.com/IKIAM-NPLab/Molecular-networking-Vibrio-diabolicus-Ili-/blob/0d29c7ee37cebd13264277641863cdef4cc9326d/PCA_QC_NEG.Rmd)
+- [PCA_POS_MeOH](https://github.com/IKIAM-NPLab/Molecular-networking-Vibrio-diabolicus-Ili-/blob/0d29c7ee37cebd13264277641863cdef4cc9326d/PCA_POS_MeOH.Rmd)
+- [PCA_MeOH_NEG](https://github.com/IKIAM-NPLab/Molecular-networking-Vibrio-diabolicus-Ili-/blob/0d29c7ee37cebd13264277641863cdef4cc9326d/PCA_MeOH_NEG.Rmd)
+- [PCA_POS_H2O](https://github.com/IKIAM-NPLab/Molecular-networking-Vibrio-diabolicus-Ili-/blob/0d29c7ee37cebd13264277641863cdef4cc9326d/PCA_POS_H2O.Rmd)
+- [PCA_H2O_NEG](https://github.com/IKIAM-NPLab/Molecular-networking-Vibrio-diabolicus-Ili-/blob/0d29c7ee37cebd13264277641863cdef4cc9326d/PCA_H2O_NEG.Rmd)
+
 ## Useful results
-# PCA, Heatmaps and HCA analysis
-- PCA, HCA and Heatmaps of the QC in positive ionization.
-![POS QC](https://github.com/user-attachments/assets/73275932-d29b-41ed-abc5-7536ca0f4abd)
+# PCA analysis
+- PCA analysis of the QC.
+![QCs](https://github.com/user-attachments/assets/b1ae8960-9ca6-467b-9d14-715816249508)
 
-- PCA, HCA and Heatmaps of the QC in negative ionization.
-![NEG QC](https://github.com/user-attachments/assets/82200715-9082-41b6-aa53-6a404ea7d3f9)
+- PCA analysis of the methanolic fraction.
+![PCA MeOH](https://github.com/user-attachments/assets/b092e2dc-f4cc-4551-93ba-9e82295999e3)
 
-- PCA, HCA and Heatmaps of the methanolic fraction in positive ionization.
-![Material suplementario bacterias marinas (10)](https://github.com/user-attachments/assets/e8ddeaf1-4958-497b-bb80-375a9c076c37)
+- PCA analysis of the aqueous fraction.
+![PCA H2O](https://github.com/user-attachments/assets/760ea461-9e26-4d98-9ef2-784920e29dee)
 
-- PCA, HCA and Heatmaps of the methanolic fraction in negative ionization.
-![NEG MEOH](https://github.com/user-attachments/assets/b7348d2c-cb13-40d1-99c0-e7f465d3e931)
+# Heatmaps and HCA
+- Heatmap of the annotated features in positive and negative polarity of the QC data.
+![HCA QCs](https://github.com/user-attachments/assets/6df17769-5a48-481b-86f1-ca890e690f40)
 
-- PCA, HCA and Heatmaps of the aqueous fraction in positive ionization.
-![POS H2O](https://github.com/user-attachments/assets/4817617b-29c2-47a3-bda7-104760c20ff7)
+- Heatmap of the annotated features in positive and negative polarity of the methanolic fraction data.
+![HCA MeOH](https://github.com/user-attachments/assets/8fb5e59c-67f0-45b2-9898-5a6ce2ecc5fd)
 
-- PCA, HCA and Heatmaps of the aqueous fraction in negative ionization.
-![NEG H2O](https://github.com/user-attachments/assets/2fd139e0-3d4d-47e8-9af6-e1250fc0c583)
+- Heatmap of the annotated features in positive and negative polarity of the aqueous fraction data.
+![HCA H2O](https://github.com/user-attachments/assets/558bdd85-212d-408d-8de2-7b7b15c7f083)
 
