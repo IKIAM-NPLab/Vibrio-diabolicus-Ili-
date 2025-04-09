@@ -11,22 +11,10 @@ The present document aims to record the procedure given for the statistical anal
 
 ## Useful results
 # PCA analysis
-- PCA analysis of the QC.
+- LC-(QTOF).
 ![QCs](https://github.com/user-attachments/assets/b1ae8960-9ca6-467b-9d14-715816249508)
 
-- PCA analysis of the methanolic fraction.
-![PCA MeOH](https://github.com/user-attachments/assets/b092e2dc-f4cc-4551-93ba-9e82295999e3)
-
-- PCA analysis of the aqueous fraction.
-![PCA H2O](https://github.com/user-attachments/assets/760ea461-9e26-4d98-9ef2-784920e29dee)
-
 # Heatmaps and HCA
-- Heatmap of the annotated features in positive and negative polarity of the QC data.
+- Heatmap of the annotated features in postive and negative polarity of the LC-MS/MS data.
 ![HCA QCs](https://github.com/user-attachments/assets/6df17769-5a48-481b-86f1-ca890e690f40)
-
-- Heatmap of the annotated features in positive and negative polarity of the methanolic fraction data.
-![HCA MeOH](https://github.com/user-attachments/assets/8fb5e59c-67f0-45b2-9898-5a6ce2ecc5fd)
-
-- Heatmap of the annotated features in positive and negative polarity of the aqueous fraction data.
-![HCA H2O](https://github.com/user-attachments/assets/558bdd85-212d-408d-8de2-7b7b15c7f083)
 
