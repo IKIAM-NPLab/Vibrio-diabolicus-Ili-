@@ -12,7 +12,7 @@ The present document aims to record the procedure given for the statistical anal
 ## Useful results
 # PCA analysis
 - LC-(QTOF).
-![Figure_1](https://github.com/user-attachments/assets/afcfe20f-98b1-4aa9-a260-9ffbe765db08)
+[Figure_1.pdf](https://github.com/user-attachments/files/19700526/Figure_1.pdf)
 
 # Heatmaps and HCA
 - Heatmap of the annotated features in postive and negative polarity of the LC-MS/MS data.
