@@ -5,9 +5,9 @@ The present document aims to record the procedure given for the statistical anal
 - [PCA_POS_QC](https://github.com/IKIAM-NPLab/Vibrio-diabolicus-Ili-/blob/main/Noteboks/PCA_POS_QC.md)
 - [PCA_NEG_QC](https://github.com/IKIAM-NPLab/Vibrio-diabolicus-Ili-/blob/main/Noteboks/PCA_NEG_QC.md)
 - [PCA_POS_MeOH](https://github.com/IKIAM-NPLab/Vibrio-diabolicus-Ili-/blob/main/Noteboks/PCA_POS_MeOH.md)
-- [PCA_MeOH_NEG](https://github.com/IKIAM-NPLab/Vibrio-diabolicus-Ili-/blob/main/Noteboks/PCA_NEG_MeOH.md)
+- [PCA_NEG_MeOH](https://github.com/IKIAM-NPLab/Vibrio-diabolicus-Ili-/blob/main/Noteboks/PCA_NEG_MeOH.md)
 - [PCA_POS_H2O](https://github.com/IKIAM-NPLab/Vibrio-diabolicus-Ili-/blob/main/Noteboks/PCA_POS_H2O.md)
-- [PCA_H2O_NEG](https://github.com/IKIAM-NPLab/Vibrio-diabolicus-Ili-/blob/main/Noteboks/PCA_NEG_H2O.md)
+- [PCA_NEG_H2O](https://github.com/IKIAM-NPLab/Vibrio-diabolicus-Ili-/blob/main/Noteboks/PCA_NEG_H2O.md)
 
 ## Useful results
 # PCA analysis
