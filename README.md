@@ -16,5 +16,6 @@ The present document aims to record the procedure given for the statistical anal
 
 # Heatmaps and HCA
 - Heatmap of the annotated features in postive and negative polarity of the LC-MS/MS data.
+
 ![heatmaps](https://github.com/user-attachments/assets/0bd5b9a8-0bbe-43f0-b079-83b7a627a152)
 
