@@ -216,11 +216,11 @@ feat_data_neg <- no_flag_neg@featureData@data
 
 ```
 
-Preparing data and transposing feature table.
+Preparing data and transneging feature table.
 
 ```{r echo=TRUE, message=FALSE, warning=FALSE, error=FALSE, results='hide'}
 
-# Transposing feature height table
+# Transneging feature height table
 transp_table_neg  <- t(peak_height_neg)
 
 # Changing NA to 0 
@@ -484,16 +484,16 @@ gg_legend <- grid.grabExpr(draw(all_legends))
 gg_legend_fn <- ggpubr::as_ggplot(gg_legend)
 
 # Heatmap plot
-posqc_hm <- plot_grid(gg_legend_fn,
+negqc_hm <- plot_grid(gg_legend_fn,
           gg_heatmap, ncol = 1,
           rel_heights = c(0.195, 0.88))
-posqc_hm
+negqc_hm
 
 
 # Save heatmap plot
-ggsave(filename = "Plots/Firts_H2O_NEG_Heatmap.png", plot = posqc_hm,
+ggsave(filename = "Plots/Firts_H2O_NEG_Heatmap.png", plot = negqc_hm,
       width = 8, height = 5, units = "in", dpi = 600, scale = 2)
-ggsave(filename = "Plots/Firts_H2O_NEG_Heatmap.pdf", plot = posqc_hm,
+ggsave(filename = "Plots/Firts_H2O_NEG_Heatmap.pdf", plot = negqc_hm,
       width = 8, height = 5, units = "in", dpi = 600, scale = 2)
 
 ```
