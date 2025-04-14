@@ -544,17 +544,17 @@ gg_legend <- grid.grabExpr(draw(all_legends))
 gg_legend_fn <- ggpubr::as_ggplot(gg_legend)
 
 # Heatmap plot
-posqc_hm <- plot_grid(gg_legend_fn,
+negqc_hm <- plot_grid(gg_legend_fn,
           gg_heatmap, ncol = 1,
           rel_heights = c(0.195, 0.88))
-posqc_hm
+negqc_hm
 ```
 
 ![](PCA_NEG_MeOH_files/figure-markdown_github/unnamed-chunk-24-1.png)
 
 ``` r
 # Save heatmap plot
-ggsave(filename = "Plots/Firts_MEOH_NEG_Heatmap.pdf", plot = posqc_hm,
+ggsave(filename = "Plots/Firts_MEOH_NEG_Heatmap.pdf", plot = negqc_hm,
       width = 8, height = 5, units = "in", dpi = 600, scale = 2)
 ```
 
