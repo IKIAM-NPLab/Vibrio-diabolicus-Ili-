@@ -4,9 +4,9 @@ The present document aims to record the procedure given for the statistical anal
 # Analysis Notebooks
 - [LC-ESI(+)-MS PCA of pooled culture media samples](https://github.com/IKIAM-NPLab/Vibrio-diabolicus-Ili-/blob/main/Noteboks/PCA_POS_QC.md)
 - [LC-ESI(-)-MS PCA of pooled culture media samples](https://github.com/IKIAM-NPLab/Vibrio-diabolicus-Ili-/blob/main/Noteboks/PCA_NEG_QC.md)
-- [LC-ESI(+)-MS PCA of_MeOH fraction](https://github.com/IKIAM-NPLab/Vibrio-diabolicus-Ili-/blob/main/Noteboks/PCA_POS_MeOH.md)
-- [LC-ESI(-)-MS PCA of_MeOH fraction](https://github.com/IKIAM-NPLab/Vibrio-diabolicus-Ili-/blob/main/Noteboks/PCA_NEG_MeOH.md)
-- [LC-ESI(+)-MS PCA of_H2O fraction](https://github.com/IKIAM-NPLab/Vibrio-diabolicus-Ili-/blob/main/Noteboks/PCA_POS_H2O.md)
+- [LC-ESI(+)-MS PCA of MeOH fraction](https://github.com/IKIAM-NPLab/Vibrio-diabolicus-Ili-/blob/main/Noteboks/PCA_POS_MeOH.md)
+- [LC-ESI(-)-MS PCA of MeOH fraction](https://github.com/IKIAM-NPLab/Vibrio-diabolicus-Ili-/blob/main/Noteboks/PCA_NEG_MeOH.md)
+- [LC-ESI(+)-MS PCA of H2O fraction](https://github.com/IKIAM-NPLab/Vibrio-diabolicus-Ili-/blob/main/Noteboks/PCA_POS_H2O.md)
 - [LC-ESI(-)-MS PCA of H2O fraction](https://github.com/IKIAM-NPLab/Vibrio-diabolicus-Ili-/blob/main/Noteboks/PCA_NEG_H2O.md)
 
 ## Useful results
