@@ -54,18 +54,74 @@ vol_pos_equal_var <- noqc_vol_pos[noqc_vol_pos@featureData@data$Levene_P_FDR > 0
 vol_pos_unequal_var <- noqc_vol_pos[noqc_vol_pos@featureData@data$Levene_P_FDR < 0.05,]
 # Fold change between Methanol vs. Water
 vol_pos_fc <- fold_change(noqc_vol_pos, group = "Group")
+# Extracting the feature abundance
+peak_pos <- exprs(vol_pos_equal_var)
+# Extracting sample information
+pdata_pos <- vol_pos_equal_var@phenoData@data
+pdata_pos <- data.frame(Sample_ID = vol_pos_equal_var$Sample_ID,
+                        Group = vol_pos_equal_var$Group)
+# Extracting feature information
+fdata_pos <- vol_pos_equal_var@featureData@data
+fdata_pos <- data.frame(Feature_ID = fdata_pos$Feature_ID,
+                        Metabolite = fdata_pos$Metabolite)
+# Transposing feature height table
+peak_pos <- t(peak_pos)
+# Feature height table to dataframe
+peak_pos <- as.data.frame(peak_pos)
+# Convert the row names to sample ID
+peak_pos <- peak_pos %>% 
+  mutate(Sample_ID = rownames(peak_pos))
+# Adding Group as variable
+peak_pos <- left_join(pdata_pos, peak_pos)
 # The two-sample t-test performing
-vol_pos_tt <- perform_t_test(vol_pos_equal_var,
-                             formula_char = "Feature ~ Group",
-                             var.equal = TRUE)
+h2o_pos <- subset(peak_pos, Group == "H2O")
+meoh_pos <- subset(peak_pos, Group == "MEOH")
+Feature_ID <- c()
+H2O_vs_MEOH_t_test_P <- c()
+for(i in 3:1015){
+  t_test <- t.test(h2o_pos[, i], meoh_pos[, i], paired = TRUE, var.equal = TRUE)
+  H2O_vs_MEOH_t_test_P <- c(H2O_vs_MEOH_t_test_P, t_test$p.value)
+  Feature_ID <- c(Feature_ID, names(peak_pos[i]))
+  vol_pos_tt <- data.frame(Feature_ID, H2O_vs_MEOH_t_test_P)
+  }
+vol_pos_tt$H2O_vs_MEOH_t_test_P_FDR <- p.adjust(vol_pos_tt$H2O_vs_MEOH_t_test_P,
+                                                method = "BH")
 # Adding a tag for t-test results
 vol_pos_tt <- vol_pos_tt %>%
   mutate(Statistic_test = case_when(
     Feature_ID != 0 ~ "Student's t-test"))
+# Extracting the feature abundance
+peak_pos_wtt <- exprs(vol_pos_unequal_var)
+# Extracting sample information
+pdata_pos_wtt <- vol_pos_unequal_var@phenoData@data
+pdata_pos_wtt <- data.frame(Sample_ID = vol_pos_unequal_var$Sample_ID,
+                        Group = vol_pos_unequal_var$Group)
+# Extracting feature information
+fdata_pos_wtt <- vol_pos_unequal_var@featureData@data
+fdata_pos_wtt <- data.frame(Feature_ID = fdata_pos_wtt$Feature_ID,
+                        Metabolite = fdata_pos_wtt$Metabolite)
+# Transposing feature height table
+peak_pos_wtt <- t(peak_pos_wtt)
+# Feature height table to dataframe
+peak_pos_wtt <- as.data.frame(peak_pos_wtt)
+# Convert the row names to sample ID
+peak_pos_wtt <- peak_pos_wtt %>% 
+  mutate(Sample_ID = rownames(peak_pos_wtt))
+# Adding Group as variable
+peak_pos_wtt <- left_join(pdata_pos_wtt, peak_pos_wtt)
 # The Welch's t-test performing
-vol_pos_wtt <- perform_t_test(vol_pos_unequal_var,
-                              formula_char = "Feature ~ Group",
-                              var.equal = FALSE)
+h2o_pos_wtt <- subset(peak_pos_wtt, Group == "H2O")
+meoh_pos_wtt <- subset(peak_pos_wtt, Group == "MEOH")
+Feature_ID <- c()
+H2O_vs_MEOH_t_test_P <- c()
+for(i in 3:50){
+  t_test <- t.test(h2o_pos_wtt[, i], meoh_pos_wtt[, i], paired = TRUE, var.equal = TRUE)
+  H2O_vs_MEOH_t_test_P <- c(H2O_vs_MEOH_t_test_P, t_test$p.value)
+  Feature_ID <- c(Feature_ID, names(peak_pos_wtt[i]))
+  vol_pos_wtt <- data.frame(Feature_ID, H2O_vs_MEOH_t_test_P)
+}
+vol_pos_wtt$H2O_vs_MEOH_t_test_P_FDR <- p.adjust(vol_pos_wtt$H2O_vs_MEOH_t_test_P,
+                                                 method = "BH")
 # Adding a tag for Welch's t-test results
 vol_pos_wtt <- vol_pos_wtt %>%
   mutate(Statistic_test = case_when(
@@ -112,12 +168,12 @@ vol_pos_plot <- ggplot(vol_pos_data, aes(log2_fc, logP)) +
                             box.padding = 0.37,
                             label.padding = 0.22,
                             label.r = 0.30,
-                            cex = 2.5,
+                            cex = 3,
                             max.overlaps = 20,
                             min.segment.length = 0,
                             seed = 42) +
   xlab(bquote(Log[2](Methanol/Water))) + ylab(bquote(-Log[10](p-value))) +
-  scale_y_continuous(limits = c(0,10), labels = label_scientific(),
+  scale_y_continuous(limits = c(0,8), labels = function(i) 10^-i,
                      expand=c(0.003, 0.003)) +
   theme(legend.position = c(0.85, 0.90),
         legend.background = element_rect(fill = "white", color = "black")) +
@@ -171,18 +227,74 @@ vol_neg_equal_var <- noqc_vol_neg[noqc_vol_neg@featureData@data$Levene_P_FDR > 0
 vol_neg_unequal_var <- noqc_vol_neg[noqc_vol_neg@featureData@data$Levene_P_FDR < 0.05,]
 # Fold change between Methanol vs. Water
 vol_neg_fc <- fold_change(noqc_vol_neg, group = "Group")
+# Extracting the feature abundance
+peak_neg <- exprs(vol_neg_equal_var)
+# Extracting sample information
+pdata_neg <- vol_neg_equal_var@phenoData@data
+pdata_neg <- data.frame(Sample_ID = vol_neg_equal_var$Sample_ID,
+                        Group = vol_neg_equal_var$Group)
+# Extracting feature information
+fdata_neg <- vol_neg_equal_var@featureData@data
+fdata_neg <- data.frame(Feature_ID = fdata_neg$Feature_ID,
+                        Metabolite = fdata_neg$Metabolite)
+# Transposing feature height table
+peak_neg <- t(peak_neg)
+# Feature height table to dataframe
+peak_neg <- as.data.frame(peak_neg)
+# Convert the row names to sample ID
+peak_neg <- peak_neg %>% 
+  mutate(Sample_ID = rownames(peak_neg))
+# Adding Group as variable
+peak_neg <- left_join(pdata_neg, peak_neg)
 # The two-sample t-test performing
-vol_neg_tt <- perform_t_test(vol_neg_equal_var,
-                             formula_char = "Feature ~ Group",
-                             var.equal = TRUE)
+h2o_neg <- subset(peak_neg, Group == "H2O")
+meoh_neg <- subset(peak_neg, Group == "MEOH")
+Feature_ID <- c()
+H2O_vs_MEOH_t_test_P <- c()
+for(i in 3:1948){
+  t_test <- t.test(h2o_neg[, i], meoh_neg[, i], paired = TRUE, var.equal = FALSE)
+  H2O_vs_MEOH_t_test_P <- c(H2O_vs_MEOH_t_test_P, t_test$p.value)
+  Feature_ID <- c(Feature_ID, names(peak_neg[i]))
+  vol_neg_tt <- data.frame(Feature_ID, H2O_vs_MEOH_t_test_P)
+}
+vol_neg_tt$H2O_vs_MEOH_t_test_P_FDR <- p.adjust(vol_neg_tt$H2O_vs_MEOH_t_test_P,
+                                                method = "BH")
 # Adding a tag for t-test results
 vol_neg_tt <- vol_neg_tt %>%
   mutate(Statistic_test = case_when(
     Feature_ID != 0 ~ "Student's t-test"))
+# Extracting the feature abundance
+peak_neg_wtt <- exprs(vol_neg_unequal_var)
+# Extracting sample information
+pdata_neg_wtt <- vol_neg_unequal_var@phenoData@data
+pdata_neg_wtt <- data.frame(Sample_ID = vol_neg_unequal_var$Sample_ID,
+                            Group = vol_neg_unequal_var$Group)
+# Extracting feature information
+fdata_neg_wtt <- vol_neg_unequal_var@featureData@data
+fdata_neg_wtt <- data.frame(Feature_ID = fdata_neg_wtt$Feature_ID,
+                            Metabolite = fdata_neg_wtt$Metabolite)
+# Transposing feature height table
+peak_neg_wtt <- t(peak_neg_wtt)
+# Feature height table to dataframe
+peak_neg_wtt <- as.data.frame(peak_neg_wtt)
+# Convert the row names to sample ID
+peak_neg_wtt <- peak_neg_wtt %>% 
+  mutate(Sample_ID = rownames(peak_neg_wtt))
+# Adding Group as variable
+peak_neg_wtt <- left_join(pdata_neg_wtt, peak_neg_wtt)
 # The Welch's t-test performing
-vol_neg_wtt <- perform_t_test(vol_neg_unequal_var,
-                              formula_char = "Feature ~ Group",
-                              var.equal = FALSE)
+h2o_neg_wtt <- subset(peak_neg_wtt, Group == "H2O")
+meoh_neg_wtt <- subset(peak_neg_wtt, Group == "MEOH")
+Feature_ID <- c()
+H2O_vs_MEOH_t_test_P <- c()
+for(i in 3:226){
+  t_test <- t.test(h2o_neg_wtt[, i], meoh_neg_wtt[, i], paired = TRUE, var.equal = TRUE)
+  H2O_vs_MEOH_t_test_P <- c(H2O_vs_MEOH_t_test_P, t_test$p.value)
+  Feature_ID <- c(Feature_ID, names(peak_neg_wtt[i]))
+  vol_neg_wtt <- data.frame(Feature_ID, H2O_vs_MEOH_t_test_P)
+}
+vol_neg_wtt$H2O_vs_MEOH_t_test_P_FDR <- p.adjust(vol_neg_wtt$H2O_vs_MEOH_t_test_P,
+                                                 method = "BH")
 # Adding a tag for Welch's t-test results
 vol_neg_wtt <- vol_neg_wtt %>%
   mutate(Statistic_test = case_when(
@@ -228,12 +340,12 @@ vol_neg_plot <- ggplot(vol_neg_data, aes(log2_fc, logP)) +
                             box.padding = 0.37,
                             label.padding = 0.22,
                             label.r = 0.30,
-                            cex = 2.5,
+                            cex = 3,
                             max.overlaps = 20,
                             min.segment.length = 0,
                             seed = 42) +
   xlab(bquote(Log[2](Methanol/Water))) + ylab(bquote(-Log[10](p-value))) +
-  scale_y_continuous(limits = c(0,10), labels = label_scientific(),
+  scale_y_continuous(limits = c(0,8), labels = function(i) 10^-i,
                      expand=c(0.003, 0.003)) +
   theme(legend.position = c(0.85, 0.90),
         legend.background = element_rect(fill = "white", color = "black")) +
@@ -251,7 +363,7 @@ volcano_plot <- arrangeGrob(vol_neg_plot,
                         layout_matrix = rbind(c(1, 2)))
 # Adding label to the figures
 volcano_one <- ggpubr::as_ggplot(volcano_plot) +
-  draw_plot_label(label = LETTERS[1:2],
+  draw_plot_label(label = LETTERS[3:4],
                   x = c(0, 0.5),
                   y = c(.99, .99))
 # Exporting (*.pdf) file
